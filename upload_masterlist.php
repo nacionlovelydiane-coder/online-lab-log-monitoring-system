@@ -62,10 +62,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
-<h2>Upload Student Masterlist</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Student Masterlist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
 
-<form method="POST" enctype="multipart/form-data">
-    <input type="file" name="file" accept=".csv" required>
-    <br><br>
-    <button type="submit">Upload</button>
-</form>
+<div class="container mt-4">
+
+    <nav class="navbar navbar-dark bg-dark rounded px-3 mb-4">
+        <span class="navbar-brand mb-0 h1">Admin Panel</span>
+        <div>
+            <a href="index.php" class="btn btn-light btn-sm">Home</a>
+            <a href="admin_dashboard.php" class="btn btn-light btn-sm">Dashboard</a>
+            <a href="reports_page.php" class="btn btn-light btn-sm">Reports</a>
+            <a href="admin_logout.php" class="btn btn-danger btn-sm">Logout</a>
+        </div>
+    </nav>
+
+    <div class="card shadow p-4">
+        <h3 class="mb-3">Upload Student Masterlist</h3>
+        <p class="text-muted">
+            Upload a CSV file containing student ID, first name, last name, and course.
+        </p>
+
+        <form method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Choose CSV File</label>
+                <input type="file" name="file" accept=".csv" class="form-control" required>
+            </div>
+
+            <button type="submit" name="upload" class="btn btn-success">Upload CSV</button>
+        </form>
+
+        <hr>
+
+        <h5>Required CSV Format</h5>
+        <div class="bg-light border rounded p-3">
+            <code>
+                2021-001,Juan,Dela Cruz,BSIT<br>
+                2021-002,Ana,Santos,BSIT
+            </code>
+        </div>
+
+        <p class="mt-3 mb-0 text-muted">
+            Generated student credentials:<br>
+            Username = Student ID number<br>
+            Password = Student ID number + surname
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
